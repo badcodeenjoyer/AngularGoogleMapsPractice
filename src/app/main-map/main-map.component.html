@@ -1,0 +1,14 @@
+<div>
+<agm-map [latitude]="52.373057" [longitude]="4.892557" [zoom]="zoom">
+  <ng-container *ngFor="let marker of markers | filter: queryString">
+   <agm-marker [longitude]="marker.longitude" [latitude]="marker.latitude"></agm-marker>
+    </ng-container>
+
+</agm-map>
+</div>
+<div class="objects">
+  <p><input type="text" placeholder="Поиск" class="form-control" [(ngModel)]="queryString"></p>
+<ng-container *ngFor="let marker of markers | filter: queryString">
+  <p class="form-control" (click)="clickedMarker(marker.id)" [id]="marker.id">{{marker.name}}</p>
+</ng-container>
+</div>
